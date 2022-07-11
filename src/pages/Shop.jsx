@@ -15,6 +15,7 @@ export function Shop() {
 		})
 			.then((res) => res.json())
 			.then((data) => {
+				console.log(data, 'data')
 				setGoods(data.shop);
 				setLoading(false);
 				console.log(goods, 'goods');
