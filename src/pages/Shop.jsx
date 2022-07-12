@@ -23,16 +23,15 @@ export function Shop() {
 				if (!data.result) {
 					setError(data.code);
 				}
-				setGoods(data.shop);
 				// console.log(data.shop, 'data.shop')
+				setGoods(data.shop);
 				setLoading(false);
-				// console.log(goods, 'goods');
 			})
 			.catch((error) => {
 				console.log(error.response, 'error.response');
 				setLoading(false);
 			});
-	}, [goods]);
+	}, []);
 	return (
 		<div className='container'>
 			{<Cart quantity={orders.length} />}

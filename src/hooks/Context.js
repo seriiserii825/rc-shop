@@ -5,7 +5,14 @@ export const Context = (props) => {
 	const [orders, setOrders] = useState([]);
 
 	const addOrder = (order) => {
-		setOrders([...orders, order]);
+		if (orders.length === 0) {
+			setOrders([order]);
+		} else {
+			let existsItem = orders.some((i) => i.mainId === order.mainId);
+			if (!existsItem) {
+				setOrders([...orders, order]);
+			}
+		}
 	};
 
 	const value = {

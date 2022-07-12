@@ -5,7 +5,7 @@ export const GoodsItem = (props) => {
 	const { addOrder } = useContext(CustomContext);
 
 	const {
-		mainId: id,
+		mainId,
 		displayName: name,
 		displayDescription: description,
 		displayType: type,
@@ -16,7 +16,7 @@ export const GoodsItem = (props) => {
 	const newOrder = (e) => {
 		e.preventDefault();
 		addOrder({
-			id,
+			mainId,
 			name,
 			price,
 		});
