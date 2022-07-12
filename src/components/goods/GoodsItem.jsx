@@ -1,11 +1,27 @@
+import React, { useContext } from 'react';
+import { CustomContext } from '../../hooks/Context';
+
 export const GoodsItem = (props) => {
+	const { addOrder } = useContext(CustomContext);
+
 	const {
+		mainId: id,
 		displayName: name,
 		displayDescription: description,
 		displayType: type,
 		price,
 		displayAssets: image,
 	} = props;
+
+	const newOrder = (e) => {
+		e.preventDefault();
+		addOrder({
+			id,
+			name,
+			price,
+		});
+	};
+
 	return (
 		<div
 			className='card'
@@ -18,7 +34,7 @@ export const GoodsItem = (props) => {
 				<span className='card-title'>{name}</span>
 			</div>
 			<div className='card-content'>{description}</div>
-			<span style={{fontWeight: "bold"}}>{type}</span>
+			<span style={{ fontWeight: 'bold' }}>{type}</span>
 			<div
 				className='card-action'
 				style={{
@@ -29,7 +45,7 @@ export const GoodsItem = (props) => {
 					paddingBottom: '14px',
 					height: '54px',
 				}}>
-				<a href='!#' className='btn left'>
+				<a href='!#' className='btn left' onClick={newOrder}>
 					Buy
 				</a>
 				<strong className='right'>{price.regularPrice}$</strong>

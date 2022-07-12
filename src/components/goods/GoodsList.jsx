@@ -1,7 +1,7 @@
 import { GoodsItem } from './GoodsItem';
 export const GoodsList = ({ goods }) => {
 	return goods.length ? (
-		<div class='grid'>
+		<div className='grid'>
 			{goods.map((good) => {
 				return <GoodsItem key={good.mainId} {...good} />;
 			})}

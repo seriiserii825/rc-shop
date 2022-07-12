@@ -1,17 +1,20 @@
 import './App.css';
+import { Context } from './hooks/Context';
 import Footer from './layouts/Footer';
 import { Header } from './layouts/Header';
 import { Shop } from './pages/Shop';
 
 function App() {
 	return (
-		<div className='App'>
-			<Header />
-			<div className='AppMain'>
-				<Shop />
+		<Context>
+			<div className='App'>
+				<Header />
+				<div className='AppMain'>
+					<Shop />
+				</div>
+				<Footer />
 			</div>
-			<Footer />
-		</div>
+		</Context>
 	);
 }
 
