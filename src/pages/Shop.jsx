@@ -6,6 +6,7 @@ import { Preloader } from '../components/ui/Preloader';
 export function Shop() {
 	const [goods, setGoods] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
 
 	useEffect(() => {
 		fetch(API_URL, {
@@ -15,10 +16,13 @@ export function Shop() {
 		})
 			.then((res) => res.json())
 			.then((data) => {
+				if (!data.result) {
+					setError(data.code);
+				}
 				setGoods(data.shop);
-				console.log(data.shop, 'data.shop')
+				// console.log(data.shop, 'data.shop')
 				setLoading(false);
-				console.log(goods, 'goods');
+				// console.log(goods, 'goods');
 			})
 			.catch((error) => {
 				console.log(error.response, 'error.response');
@@ -27,7 +31,7 @@ export function Shop() {
 	}, [goods]);
 	return (
 		<div className='container'>
-			{loading ? <Preloader /> : <GoodsList goods={goods} />}
+			{error ? <h2>{error}</h2> : loading ? <Preloader /> : <GoodsList goods={goods} />}
 		</div>
 	);
 }

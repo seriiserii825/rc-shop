@@ -6,17 +6,33 @@ export const GoodsItem = (props) => {
 		price,
 		displayAssets: image,
 	} = props;
-	console.log(image[0].url, 'image');
 	return (
-		<div className='card'>
+		<div
+			className='card'
+			style={{
+				display: 'flex',
+				flexDirection: 'column',
+			}}>
 			<div className='card-image'>
 				<img src={image[0].url} alt='' />
 				<span className='card-title'>{name}</span>
 			</div>
 			<div className='card-content'>{description}</div>
-			<div className='card-action'>
-				<span className='left'>{price.regularPrice}$</span>
-				<a href='!#'>This is a link</a>
+			<span style={{fontWeight: "bold"}}>{type}</span>
+			<div
+				className='card-action'
+				style={{
+					display: 'flex',
+					alignItems: 'center',
+					justifyContent: 'space-between',
+					marginTop: 'auto',
+					paddingBottom: '14px',
+					height: '54px',
+				}}>
+				<a href='!#' className='btn left'>
+					Buy
+				</a>
+				<strong className='right'>{price.regularPrice}$</strong>
 			</div>
 		</div>
 	);
