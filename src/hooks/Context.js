@@ -5,13 +5,18 @@ export const Context = (props) => {
 	const [orders, setOrders] = useState([]);
 
 	const addOrder = (order) => {
-		if (orders.length === 0) {
-			setOrders([order]);
+		let existsItem = orders.some((i) => i.mainId === order.mainId);
+		if (!existsItem) {
+			let newOrders = [...orders, { ...order, quantity: 1 }];
+			setOrders(newOrders);
 		} else {
-			let existsItem = orders.some((i) => i.mainId === order.mainId);
-			if (!existsItem) {
-				setOrders([...orders, order]);
-			}
+			let newOrders = orders.map((item) => {
+				if (item.mainId === order.mainId) {
+					return { ...item, quantity: item.quantity + 1 };
+				}
+				return item;
+			});
+			setOrders(newOrders);
 		}
 	};
 
