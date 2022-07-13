@@ -91,3 +91,14 @@ ul {
 	justify-content: space-between;
 	align-items: center;
 }
+.basket__icon {
+  cursor: pointer;
+}
+
+.disable-select {
+  user-select: none; /* supported by Chrome and Opera */
+   /* -webkit-user-select: none; /1* Safari *1/ */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
