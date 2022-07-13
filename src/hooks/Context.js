@@ -3,6 +3,11 @@ import React, { createContext, useState } from 'react';
 export const CustomContext = createContext();
 export const Context = (props) => {
 	const [orders, setOrders] = useState([]);
+	const [isBasketVisible, setIsBasketVisible] = useState(false);
+
+	const toggleBasket = () => {
+		setIsBasketVisible(!isBasketVisible);
+	};
 
 	const addOrder = (order) => {
 		let existsItem = orders.some((i) => i.mainId === order.mainId);
@@ -23,6 +28,8 @@ export const Context = (props) => {
 	const value = {
 		orders,
 		addOrder,
+		isBasketVisible,
+		toggleBasket,
 	};
 
 	return (

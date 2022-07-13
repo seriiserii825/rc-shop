@@ -18,7 +18,8 @@ export const GoodsItem = (props) => {
 		addOrder({
 			mainId,
 			name,
-			price,
+			price: price.regularPrice,
+			image: image[0].url
 		});
 	};
 
