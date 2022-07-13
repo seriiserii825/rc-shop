@@ -25,11 +25,17 @@ export const Context = (props) => {
 		}
 	};
 
+	const removeOrder = (id) => {
+		let filteredOrders = orders.filter((item) => item.mainId !== id);
+		setOrders(filteredOrders);
+	};
+
 	const value = {
 		orders,
 		addOrder,
 		isBasketVisible,
 		toggleBasket,
+		removeOrder,
 	};
 
 	return (
