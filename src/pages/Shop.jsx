@@ -4,9 +4,11 @@ import { GoodsList } from '../components/goods/GoodsList';
 import { Preloader } from '../components/ui/Preloader';
 import { Cart } from '../components/Cart';
 import { CustomContext } from '../hooks/Context';
+import { BasketList } from '../components/basket/BasketList';
 
 export function Shop() {
 	const { orders } = useContext(CustomContext);
+	const { isBasketVisible } = useContext(CustomContext);
 
 	const [goods, setGoods] = useState([]);
 	const [loading, setLoading] = useState(true);
@@ -42,6 +44,7 @@ export function Shop() {
 			) : (
 				<GoodsList goods={goods} />
 			)}
+			{isBasketVisible && <BasketList />}
 		</div>
 	);
 }
