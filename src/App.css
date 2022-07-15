@@ -56,6 +56,26 @@
 .AppMain {
 	padding: 6rem 0;
 }
+@keyframes shake {
+	0% {
+		transform: rotate(10deg) scale(1.4);
+	}
+	20% {
+		transform: rotate(-10deg) scale(1.4);
+	}
+	40% {
+		transform: rotate(10deg) scale(1.4);
+	}
+	60% {
+		transform: rotate(-10deg) scale(1.4);
+	}
+	80% {
+		transform: rotate(10deg) scale(1.4);
+	}
+	100% {
+		transform: rotate(0deg) scale(1);
+	}
+}
 .cart {
 	position: fixed;
 	top: 5rem;
@@ -63,7 +83,11 @@
 	display: flex;
 	align-items: center;
 	padding: 1rem;
+	transition: all 0.2s;
 	cursor: pointer;
+}
+.cart.cart--active {
+	animation: shake .6s forwards linear;
 }
 ul {
 	margin: 0 !important;
@@ -80,7 +104,14 @@ ul {
 	justify-content: center;
 	align-items: center;
 	background: rgba(0, 0, 0, 0.9);
+	opacity: 0;
+	transition: all 0.4s;
+	pointer-events: none;
 	z-index: 10;
+}
+.basket.basket--visible {
+	opacity: 1;
+	pointer-events: initial;
 }
 .basket__list {
 	flex: 0 0 50rem;
@@ -92,13 +123,19 @@ ul {
 	align-items: center;
 }
 .basket__icon {
-  cursor: pointer;
+	cursor: pointer;
 }
 
-.disable-select {
-  user-select: none; /* supported by Chrome and Opera */
-   /* -webkit-user-select: none; /1* Safari *1/ */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
+* {
+	user-select: none; /* supported by Chrome and Opera */
+	/* -webkit-user-select: none; /1* Safari *1/ */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+}
+.goods-item__btn {
+	transition: all 0.4s;
+}
+.goods-item__btn:active {
+	transform: scale(0.9);
 }

@@ -46,10 +46,11 @@ export const GoodsItem = (props) => {
 					paddingBottom: '14px',
 					height: '54px',
 				}}>
-				<a href='!#' className='btn left' onClick={newOrder}>
+				<a href='!#' className='goods-item__btn btn left' onClick={newOrder}>
+
 					Buy
 				</a>
-				<strong className='right'>{price.regularPrice}$</strong>
+				<strong className='btn blue right'>{price.regularPrice}$</strong>
 			</div>
 		</div>
 	);

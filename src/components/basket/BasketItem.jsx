@@ -5,7 +5,7 @@ export function BasketItem(props) {
   const { removeOrder, incQuantity, decQuantity } = useContext(CustomContext);
 
   const removeBasketItem = (id) => {
-    let remove = prompt("Are you sure you want to remove this item?", "yes");
+    let remove = prompt("Are you sure you want to remove ?", `${name}`);
     remove && removeOrder(id);
   };
 
